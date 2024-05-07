@@ -37,3 +37,26 @@ console.log("Email dello user:", user.email) // Se provo ad accedere ad una prop
 
 user.age = 30 // Posso sovrascrivere i valori delle proprietà con l'assegnazione
 console.log("USER:", user)
+user.email = "aldo@gmail.com" // Aggiungo una nuova proprietà
+
+delete user.isActor // Cancello la proprietà
+console.log("USER:", user)
+console.log("USER is actor:", user.isActor)
+
+// **************************************************** COPIA DI OGGETTI ****************************
+// const user2 = user // NON SI COPIANO GLI OGGETTI CON L'UGUALE!
+// // Questo perché alla riga 47 JS non mi crea una nuova locazione di memoria contenente i dati di user2,
+// // bensì punta alla stessa locazione di user e pertanto andando a modificare uno dei due andrò a modificare anche l'altro (e molto probabilmente questo NON è il comportamento che voglio)
+// console.log("USER 2: ", user2)
+// user2.firstName = "Giovanni"
+// console.log("USER 2: ", user2)
+// console.log("USER : ", user)
+
+// Per copiare tutti i valori di un oggetto in un altro ci sono 2 metodi:
+// 1) Object.assign()
+// 2) Spread Operator
+const user2 = Object.assign({}, user) // 1) Così sto copiando tutte le proprietà da user ad un oggetto nuovo e vuoto {} che verrà poi trasferito in user2
+const user3 = { ...user } // 2) Stesso discorso di sopra ma più sintetico
+user2.firstName = "Giovanni"
+console.log("USER 2: ", user2)
+console.log("USER : ", user)
